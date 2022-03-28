@@ -10,7 +10,7 @@ class MapContainer extends Component {
     this.state = {
       lng: -70.9,
       lat: 42.35,
-      zoom: 9
+      zoom: 10
     };
     this.mapContainer = React.createRef();
   }
@@ -37,11 +37,7 @@ class MapContainer extends Component {
   render() {
     const { lng, lat, zoom } = this.state;
     return (
-      <div>
-        <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-        </div>
-        <div ref={this.mapContainer} className="map-container" />
+      <div ref={this.mapContainer} className="map-container">
       </div>
     );
   }

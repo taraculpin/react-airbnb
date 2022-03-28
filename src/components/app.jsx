@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import FlatList from "./flat_list";
-// import MapContainer from "./map_container";
 import flats from "../../data/flats";
 import MapContainer from "./map_container";
 
