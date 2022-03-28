@@ -1,16 +1,19 @@
 
 import React, { Component } from "react";
+import mapboxgl from '!mapbox-gl';
+
+mapboxgl.accessToken = 'pk.eyJ1IjoidGFyYW1hY3UiLCJhIjoiY2t6OGp6Z3QyMGEwcTJ1bzF6bnZjZmtjdyJ9.PGyURIG71drebfI-t81J4Q';
 
 class MapContainer extends Component {
   constructor(props) {
     super(props);
-      this.state = {
+    this.state = {
       lng: -70.9,
       lat: 42.35,
       zoom: 9
-      };
+    };
     this.mapContainer = React.createRef();
-    }
+  }
 
   componentDidMount() {
     const { lng, lat, zoom } = this.state;
@@ -20,12 +23,27 @@ class MapContainer extends Component {
       center: [lng, lat],
       zoom: zoom
     });
-    }
+
+
+    map.on('move', () => {
+      this.setState({
+        lng: map.getCenter().lng.toFixed(4),
+        lat: map.getCenter().lat.toFixed(4),
+        zoom: map.getZoom().toFixed(2)
+      });
+    });
+  }
 
   render() {
+    const { lng, lat, zoom } = this.state;
     return (
-      "This is the map container"
-    )
+      <div>
+        <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
+        <div ref={this.mapContainer} className="map-container" />
+      </div>
+    );
   }
 }
 

@@ -23,10 +23,10 @@ module.exports = {
       {
         test: /\.s?css$/,
         exclude: /node_modules/,
-        use: [ 
-          { 
+        use: [
+          {
             loader: 'style-loader'
-          }, 
+          },
           {
             loader: 'css-loader'
           },
@@ -38,6 +38,17 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
       },
     ]
   },
