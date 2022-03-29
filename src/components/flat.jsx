@@ -15,6 +15,7 @@ class Flat extends Component {
         <div className="card-category">
           {this.props.price} {this.props.priceCurrency}
         </div>
+        <a className="card-link" href="#"></a>
       </div>
     )
   }

@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import mapboxgl from '!mapbox-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFyYW1hY3UiLCJhIjoiY2t6OGp6Z3QyMGEwcTJ1bzF6bnZjZmtjdyJ9.PGyURIG71drebfI-t81J4Q';
 
@@ -8,9 +9,9 @@ class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lng: -70.9,
-      lat: 42.35,
-      zoom: 10
+      lng: 2.35,
+      lat: 48.84,
+      zoom: 11,
     };
     this.mapContainer = React.createRef();
   }
