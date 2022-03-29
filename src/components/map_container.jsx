@@ -46,6 +46,10 @@ class MapContainer extends Component {
     map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
+  // Adding the same code that;s in DidMount will make the highlighted marker update but also re-renders the entire map
+  // componentDidUpdate() {
+  // }
+
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFyYW1hY3UiLCJhIjoiY2t6OGp6Z3QyMGEwcTJ1bzF6bnZjZmtjdyJ9.PGyURIG71drebfI-t81J4Q';
     const { lng, lat, zoom } = this.state;
