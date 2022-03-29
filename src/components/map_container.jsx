@@ -32,6 +32,12 @@ class MapContainer extends Component {
     });
   }
 
+  #fitMapToMarkers(map) {
+    const bounds = new mapboxgl.LngLatBounds()
+    this.props.flats.forEach(flat => bounds.extend([ flat.lng, flat.lat ]))
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  }
+
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoidGFyYW1hY3UiLCJhIjoiY2t6OGp6Z3QyMGEwcTJ1bzF6bnZjZmtjdyJ9.PGyURIG71drebfI-t81J4Q';
     const { lng, lat, zoom } = this.state;
@@ -42,6 +48,7 @@ class MapContainer extends Component {
       zoom: zoom
     });
     this.#addMarkersToMap(map);
+    this.#fitMapToMarkers(map);
 
     map.on('move', () => {
       this.setState({
