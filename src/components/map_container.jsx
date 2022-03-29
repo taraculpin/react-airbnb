@@ -15,16 +15,23 @@ class MapContainer extends Component {
     this.mapContainer = React.createRef();
   }
 
+  handleClick = (event) => {
+    const id = parseInt(event.target.attributes.id.nodeValue)
+    this.props.selectedFlat(id)
+  }
+
   #addMarkersToMap(map) {
     this.props.flats.forEach(flat => {
     const popup = new mapboxgl.Popup().setHTML(flat.name)
 
     const customMarker = document.createElement("div")
-    customMarker.className = "marker"
+    this.props.selectedFlatId === flat.id ? customMarker.className = "marker active" : customMarker.className = "marker"
     customMarker.style.backgroundImage = `url('https://www.svgrepo.com/show/22031/home-icon-silhouette.svg')`
     customMarker.style.backgroundSize = "contain"
     customMarker.style.width = "25px"
     customMarker.style.height = "25px"
+    customMarker.id = flat.id
+    customMarker.onclick = this.handleClick;
 
     new mapboxgl.Marker(customMarker)
       .setLngLat([ flat.lng, flat.lat ])

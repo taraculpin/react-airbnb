@@ -40,6 +40,8 @@ body {
 .marker {
   height: 20px;
   width: 20px;
-  background-color: none;
   // border-radius: 50%;
+  &.active {
+    background-color: red;
+  }
 }
