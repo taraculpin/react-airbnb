@@ -10,14 +10,20 @@ class App extends Component {
   constructor(props) {
     super(props);
       this.state = {
-        flats: flats
+        flats: flats,
+        selectedFlatId: flats[0].id
       }
+  }
+  selectedFlat = (id) => {
+    this.setState({
+      selectedFlatId: id
+    });
   }
 
   render() {
     return (
       <div>
-        <FlatList flats={this.state.flats}/>
+        <FlatList flats={this.state.flats} selectedFlat={this.selectedFlat} selectedFlatId={this.state.selectedFlatId}/>
         <MapContainer flats={this.state.flats} />
       </div>
     )
