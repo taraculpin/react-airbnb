@@ -15,8 +15,8 @@ class MapContainer extends Component {
   }
 
   #addMarkersToMap(map) {
-    this.props.markers.forEach(marker => {
-    // const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+    this.props.flats.forEach(flat => {
+    const popup = new mapboxgl.Popup().setHTML(flat.name)
 
     const customMarker = document.createElement("div")
     customMarker.className = "marker"
@@ -26,7 +26,8 @@ class MapContainer extends Component {
     customMarker.style.height = "25px"
 
     new mapboxgl.Marker(customMarker)
-      .setLngLat([ marker[1], marker[0] ])
+      .setLngLat([ flat.lng, flat.lat ])
+      .setPopup(popup)
       .addTo(map)
     });
   }
