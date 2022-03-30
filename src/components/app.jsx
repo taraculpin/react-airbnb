@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.selectedFlatId)
     return (
       <div>
         <FlatList flats={this.state.flats} selectedFlat={this.selectedFlat} selectedFlatId={this.state.selectedFlatId}/>
