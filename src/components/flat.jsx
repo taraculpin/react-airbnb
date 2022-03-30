@@ -4,20 +4,21 @@ import App from "./app";
 
 class Flat extends Component {
   handleClick = (event) => {
-    this.props.selectedFlat(this.props.id)
+    this.props.selectedFlat(this.props.flat.id)
   }
 
   render() {
+    const { selectedFlat, selectedFlatId, flat: {id, imageUrl, name, priceCurrency, price}} = this.props;
     return (
       <div
-        className={ this.props.id === this.props.selectedFlatId ? "active card" : "card"}
-        style={{backgroundImage: `url(${this.props.imageUrl})`}}
+        className={id === selectedFlatId ? "active card" : "card"}
+        style={{backgroundImage: `url(${imageUrl})`}}
         onClick={this.handleClick}>
         <div className="card-description">
-          {this.props.name}
+          {name}
         </div>
         <div className="card-category">
-          {this.props.price} {this.props.priceCurrency}
+          {price} {priceCurrency}
         </div>
         <a className="card-link" href="#"></a>
       </div>
