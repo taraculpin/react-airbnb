@@ -4,11 +4,12 @@ import App from "./app";
 
 class Flat extends Component {
   handleClick = (event) => {
-    this.props.selectedFlat(this.props.flat.id)
+    const { selectedFlat, flat } = this.props;
+    selectedFlat(flat.id)
   }
 
   render() {
-    const { selectedFlat, selectedFlatId, flat: {id, imageUrl, name, priceCurrency, price}} = this.props;
+    const { selectedFlatId, flat: {id, imageUrl, name, priceCurrency, price}} = this.props;
     return (
       <div
         className={id === selectedFlatId ? "active card" : "card"}
